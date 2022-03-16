@@ -3,24 +3,25 @@
 
 int main()
 {
-    int *zPtr; /* zPtr will reference array z */
-    char z[5] = "hi";
-    int intz[5];
+    char input[6]; 
+    char placeholder[6];
 
-    for (int i = 0; i < strlen(z); i++)
+    printf("Player 1, enter a word of no more than 6 letters:\n");
+    fgets(input, 255, stdin);
+
+    for (int i = 0; i < strlen(input) - 2; i ++)
     {
-        intz[i] = z[i];
+        placeholder[i] = '_';
     }
-    
-    zPtr = intz;
 
-    printf("%d\n", * zPtr);
-
-    /* print the entire array z */
-    for (int i = 0; i < strlen(z); i++)
+    for (int i = 0; i < strlen(placeholder) - 1; i++)
     {
-        printf("%d \n", *(zPtr + i));
+        printf("%c", placeholder[i]);
+        printf(" ");
     }
+
+    memcpy(placeholder, input, sizeof(placeholder));
+    printf("\n");
 
     return 0;
 }
